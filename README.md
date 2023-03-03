@@ -25,6 +25,7 @@ go run main.go
 
 Then you can launch the apllication with:
 ```
+cd ..
 npm install
 npm run dev -- --open
 ```
