@@ -21,6 +21,13 @@ func main() {
 
   e.Use(middleware.CORS())
 
+  db, err := gorm.Open(sqlite.Open("todo.db"), &gorm.Config{})
+
+  if err != nil {
+    panic("error accessing db")
+  }
+  db.AutoMigrate(&Task {})
+
   e.GET("/", func(c echo.Context) error {
 		var tasks = get_tasks()
     return c.JSON(http.StatusOK, tasks)
@@ -68,7 +75,6 @@ func get_tasks() []Task {
   if err != nil {
     panic("error accessing db")
   }
-  db.AutoMigrate()
 
   var tasks [] Task
   db.Find(&tasks)
