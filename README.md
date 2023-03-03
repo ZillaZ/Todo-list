@@ -6,7 +6,7 @@ Todo list web application. Made with Svelte and Go
 You'll need SQLite to run the aplication
 
 
-Initialize a database called "todo.db":
+On the server folder, initialize a database called "todo.db":
 
 ```
 sqlite3 todo.db
