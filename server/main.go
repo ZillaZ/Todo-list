@@ -43,6 +43,11 @@ func main() {
     return c.String(http.StatusOK, "OK")
   })
 
+  e.GET("/del/:desc", func(c echo.Context) error {
+    del_task(c.Param("desc"))
+    return c.JSON(http.StatusOK, "OK")
+  })
+
 	e.Logger.Fatal(e.Start(":5050"))
 }
 
@@ -79,4 +84,15 @@ func get_tasks() []Task {
   var tasks [] Task
   db.Find(&tasks)
   return tasks
+}
+
+func del_task(desc string) {
+  db, err := gorm.Open(sqlite.Open("todo.db"), &gorm.Config{})
+
+  if err != nil {
+    panic("error accessing db")
+  }
+
+  var task Task = Task { Description: desc, Completed: true }
+  db.Where("Description = ?", desc).Delete(&task)
 }
