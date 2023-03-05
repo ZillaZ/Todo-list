@@ -1,12 +1,11 @@
 # To-do List
 (Work in Progress)
 
-Todo list web application. Made with Svelte and Go
+Todo list web application made with Svelte and Go.
 
-You'll need MariaDB to run the aplication
+You'll need MariaDB to run the application.
 
-
-On the server folder, create a file named '.env'. It's content should follow the following format:
+In the server folder, create a file named ".env". Its contents should follow the following format:
 
 ```
 DBURL = myuser:mypass@tcp(127.0.0.1:3306)/mydbname?charset=utf8mb4&parseTime=True&loc=Local
