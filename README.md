@@ -3,6 +3,8 @@
 
 Todo list web application made with Svelte and Go.
 
+You can see the application working on https://todo-list-nine-ivory.vercel.app
+
 You'll need MariaDB to run the application.
 
 In the server folder, create a file named ".env". Its contents should follow the following format:
