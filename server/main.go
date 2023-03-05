@@ -2,7 +2,8 @@ package main
 
 import (
   "gorm.io/gorm"
-  "gorm.io/driver/sqlite"
+  "github.com/joho/godotenv"
+  "gorm.io/driver/mysql"
   "net/http"
   "github.com/labstack/echo/v4"
   "github.com/labstack/echo/v4/middleware"
@@ -21,7 +22,15 @@ func main() {
 
   e.Use(middleware.CORS())
 
-  db, err := gorm.Open(sqlite.Open("todo.db"), &gorm.Config{})
+  envs, err := godotenv.Read(".env")
+
+  if err != nil {
+    panic("error reading env")
+  }
+
+  dburl := envs["DBURL"]
+
+  db, err := gorm.Open(mysql.Open(dburl), &gorm.Config{})
 
   if err != nil {
     panic("error accessing db")
