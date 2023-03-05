@@ -5,7 +5,7 @@
     let _taskDesc
 
     onMount(async () => {
-        fetch("http://127.0.0.1:5050")
+        fetch("https://todolist-zillaz.koyeb.app/")
         .then(response => response.json())
         .then(_read_data => {
             console.log(_read_data)

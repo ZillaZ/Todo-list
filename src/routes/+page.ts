@@ -11,12 +11,12 @@ export let _read_data = derived(_data, ($_data) => {
 
 export function _newTask(taskDesc: string) {
     if (!taskDesc) return null
-    fetch("http://127.0.0.1:5050/new/" + taskDesc)
+    fetch("https://todolist-zillaz.koyeb.app/new/" + taskDesc)
     _updateStores()
 }
 
 export function _updateStores() {
-    fetch("http://127.0.0.1:5050")
+    fetch("https://todolist-zillaz.koyeb.app/")
     .then(response => response.json()
     .then(_read_data => {
         _data.set(_read_data)
@@ -27,11 +27,11 @@ export function _updateStores() {
 }
 
 export function _deleteTask(taskDesc: string) {
-    fetch("http://127.0.0.1:5050/del/" + taskDesc)
+    fetch("https://todolist-zillaz.koyeb.app/del/" + taskDesc)
     _updateStores()
 }
 
 export function _updateStatus(taskDesc: string) {
-    fetch("http://127.0.0.1:5050/" + taskDesc)
+    fetch("https://todolist-zillaz.koyeb.app/" + taskDesc)
     _updateStores()
 }
